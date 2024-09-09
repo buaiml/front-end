@@ -13,6 +13,11 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const links: {key: string, value: string}[] = [
+    {key: "Home", value: "/"},
+    {key: "Events", value: "/events"},
+    {key: "Discord", value: "https://discord.gg/TyubkeGSXj"},
+  ];
 
   return (
     <>
@@ -24,10 +29,10 @@ const Header: React.FC = () => {
               <span className="text-2xl font-bold">AI/ML Club</span>
             </Link>
             <ul className="flex space-x-4">
-              {['Home', 'Events'].map((item) => (
-                <li key={item}>
+              {links.map((item) => (
+                <li key={item.key}>
                   <Link
-                    href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                    href={item.value}
                     className="text-white transition-all duration-300 ease-in-out
                                hover:text-accent3 hover:underline
                                relative after:content-[''] after:absolute after:bottom-0 after:left-0
@@ -35,7 +40,7 @@ const Header: React.FC = () => {
                                after:transform after:scale-x-0 after:transition-transform after:duration-300
                                hover:after:scale-x-100"
                   >
-                    {item}
+                    {item.key}
                   </Link>
                 </li>
               ))}

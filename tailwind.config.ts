@@ -20,6 +20,9 @@ const config: Config = {
       backgroundImage: {
         'gradient-conic': 'conic-gradient(var(--tw-gradient-stops))',
       },
+      fontFamily: {
+        mono: ['"JetBrains Mono"', 'monospace'],
+      },
     },
   },
   plugins: [],
