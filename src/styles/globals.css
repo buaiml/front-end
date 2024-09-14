@@ -8,18 +8,24 @@ body {
 
 @keyframes gradient {
     0% {
+        background-position: 15% 65%;
+    }
+    25% {
         background-position: 25% 75%;
     }
     50% {
-        background-position: 75% 25%;
+        background-position: 35% 85%;
+    }
+    75% {
+        background-position: 25% 75%;
     }
     100% {
-        background-position: 25% 75%;
+        background-position: 15% 65%;
     }
 }
 
 .bg-gradient-animated {
-    background: linear-gradient(112deg, #800000, #4A1E2F, #1A0A1A);
+    background: linear-gradient(112deg, #800000, #800000, #ffffff, #ffffff);
     background-size: 400% 400%;
-    animation: gradient 100s ease infinite;
+    animation: gradient 15s ease-in-out infinite;
 }
