@@ -1,14 +1,18 @@
-import React, { useState, useEffect, useRef, ReactNode } from 'react';
+import React, { useState, useEffect, useRef, ReactNode, forwardRef, useImperativeHandle } from 'react';
 
 interface SnapScrollProps {
   children: ReactNode[];
   scrollDuration?: number;
 }
 
-const SnapScroll: React.FC<SnapScrollProps> = ({
-                                                 children,
-                                                 scrollDuration = 500
-                                               }) => {
+interface SnapScrollRef {
+  scrollTo: (index: number) => void;
+}
+
+const SnapScroll = forwardRef<SnapScrollRef, SnapScrollProps>(({
+                                                                 children,
+                                                                 scrollDuration = 350
+                                                               }, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const isScrollingRef = useRef(false);
@@ -45,6 +49,10 @@ const SnapScroll: React.FC<SnapScrollProps> = ({
       requestAnimationFrame(step);
     }
   };
+
+  useImperativeHandle(ref, () => ({
+    scrollTo
+  }));
 
   const easeInOutCubic = (t: number): number => {
     return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
@@ -92,6 +100,8 @@ const SnapScroll: React.FC<SnapScrollProps> = ({
       {React.Children.map(children, (child, index) => (child))}
     </div>
   );
-};
+});
+
+SnapScroll.displayName = 'SnapScroll';
 
 export default SnapScroll;

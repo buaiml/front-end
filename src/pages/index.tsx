@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import Layout from '../components/Layout';
 import FadeInSection from '../components/FadeInSection';
 import Link from "next/link";
 import EventSection from '../components/EventSection';
 import SnapScroll from '../components/SnapScroll';
+import ScrollDownArrow from '../components/ScrollDownArrow';
 
 const Home: React.FC = () => {
+  const snapScrollRef = useRef<{ scrollTo: (index: number) => void } | null>(null);
+
+  const handleScroll = () => {
+    if (snapScrollRef.current) {
+      snapScrollRef.current.scrollTo(1);
+    }
+  };
+
   return (
     <Layout>
       <div style={{
@@ -14,7 +23,7 @@ const Home: React.FC = () => {
         scrollSnapType: 'y mandatory',
         scrollBehavior: 'smooth'
       }}>
-        <SnapScroll>
+        <SnapScroll ref={snapScrollRef}>
           <div className="relative min-h-screen">
             <div className="container mx-auto px-8 py-24 min-h-screen flex flex-col justify-center items-center">
               <FadeInSection>
@@ -41,6 +50,7 @@ const Home: React.FC = () => {
                   </Link>
                 </div>
               </FadeInSection>
+              <ScrollDownArrow onScroll={handleScroll}/>
             </div>
           </div>
 
