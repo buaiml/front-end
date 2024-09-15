@@ -10,7 +10,6 @@ const Header: React.FC = () => {
   const links: { key: string, value: string }[] = [
     {key: "Home", value: "/"},
     {key: "Events", value: "/events"},
-    {key: "Discord", value: "https://discord.gg/TyubkeGSXj"},
   ];
 
   return (
@@ -20,7 +19,7 @@ const Header: React.FC = () => {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center">
               <Image src="/images/logo.png" alt="AI Society Logo" width={40} height={40} className="mr-2"/>
-              <span className="text-2xl font-bold hidden sm:inline">AI Society</span>
+              <span className="text-2xl font-bold sm:inline">AI Society</span>
             </Link>
 
             <div className="hidden md:flex items-center space-x-8">

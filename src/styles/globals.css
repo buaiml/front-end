@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-darkPurple text-white;
+  @apply bg-white text-white;
 }
 
 @keyframes gradient {
