@@ -15,7 +15,7 @@ const Home: React.FC = () => {
         scrollBehavior: 'smooth'
       }}>
         <SnapScroll>
-          <div className="relative min-h-200vh">
+          <div className="relative min-h-screen">
             <div className="container mx-auto px-8 py-24 min-h-screen flex flex-col justify-center items-center">
               <FadeInSection>
                 <h1 className="text-6xl font-mono font-extrabold mb-8 text-white text-center">
@@ -44,10 +44,9 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          <div className="relative min-h-screen bg-white">
+          <div className="relative min-h-screen bg-accent1">
             <EventSection/>
           </div>
-          <div className="relative min-h-screen bg-accent1"/>
           <div className="relative min-h-screen bg-accent2"/>
         </SnapScroll>
       </div>

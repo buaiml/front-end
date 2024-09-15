@@ -8,19 +8,13 @@ body {
 
 @keyframes gradient {
     0% {
-        background-position: 15% 65%;
-    }
-    25% {
-        background-position: 25% 75%;
+        background-position: 25% 65%;
     }
     50% {
-        background-position: 35% 85%;
-    }
-    75% {
-        background-position: 25% 75%;
+        background-position: 35% 75%;
     }
     100% {
-        background-position: 15% 65%;
+        background-position: 25% 65%;
     }
 }
 

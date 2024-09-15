@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const EventSection: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center p-8 bg-white text-gray-800">
+    <div className="min-h-screen flex flex-col justify-center items-center p-8 text-gray-800">
       <h2 className="text-5xl font-bold mb-8 text-center">Upcoming Event</h2>
       <div className="max-w-4xl w-full bg-gray-100 rounded-lg shadow-lg p-6">
         <EventsList maxEvents={1} />
