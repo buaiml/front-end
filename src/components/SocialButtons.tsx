@@ -10,6 +10,9 @@ const SocialButtons: React.FC = () => {
       <Link href="https://github.com/buaiml" aria-label="GitHub" className="transition-transform duration-300 hover:scale-110">
         <img src="/images/github-icon.svg" alt="GitHub" className="w-8 h-8" />
       </Link>
+      <Link href="https://www.instagram.com/buaisociety?igsh=ZG9pd3FhOXhzNnQy" aria-label="Instagram" className="transition-transform duration-300 hover:scale-110">
+        <img src="/images/instagram-icon.svg" alt="Instagram" className="w-8 h-8" />
+      </Link>
     </div>
   )
 }
