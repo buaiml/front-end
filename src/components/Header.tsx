@@ -21,8 +21,8 @@ const Header: React.FC = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      <div className={`${scrolled ? 'bg-background/80 backdrop-blur-md' : ''}`}>
-        <nav className={`container mx-auto px-4 py-4 flex justify-between items-center`}>
+      <div className="bg-background/80 backdrop-blur-md">
+        <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center">
             <Image src="/images/logo.png" alt="AI Society Logo" width={40} height={40} className="mr-2"/>
             <span className="text-2xl font-bold">AI Society</span>
@@ -46,8 +46,6 @@ const Header: React.FC = () => {
           </ul>
         </nav>
       </div>
-      <div
-        className={`h-4 bg-gradient-to-b from-background/80 to-transparent ${scrolled ? 'opacity-100' : 'opacity-0'}`}/>
     </header>
   );
 };
