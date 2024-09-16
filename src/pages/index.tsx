@@ -4,7 +4,6 @@ import FadeInSection from '../components/FadeInSection';
 import SnapScroll from '../components/SnapScroll';
 import ScrollDownArrow from '../components/ScrollDownArrow';
 import {format} from "date-fns";
-import {Head} from "next/document";
 
 interface Event {
   id: string;
@@ -15,7 +14,7 @@ interface Event {
   end_time: number;
 }
 
-const EventItem: React.FC<{ event: Event }> = ({event}) => {
+const EventItem: React.FC<{ event: Event }> = ({ event }) => {
   const startDate = new Date(event.start_time * 1000);
   const endDate = new Date(event.end_time * 1000);
 
@@ -23,17 +22,27 @@ const EventItem: React.FC<{ event: Event }> = ({event}) => {
     <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg overflow-hidden">
         <div className="p-6 sm:p-8 flex flex-col sm:flex-row items-start font-mono">
-          <div className="mb-4 sm:mb-0 sm:mr-8 text-center">
-            <div className="text-4xl sm:text-6xl font-bold text-white">{format(startDate, 'd')}</div>
-            <div className="text-lg sm:text-xl uppercase text-gray-300">{format(startDate, 'MMM')}</div>
-          </div>
+          <FadeInSection delay={0}>
+            <div className="mb-4 sm:mb-0 sm:mr-8 text-center">
+              <div className="text-4xl sm:text-6xl font-bold text-white">{format(startDate, 'd')}</div>
+              <div className="text-lg sm:text-xl uppercase text-gray-300">{format(startDate, 'MMM')}</div>
+            </div>
+          </FadeInSection>
           <div className="flex-grow">
-            <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-2 sm:mb-4">{event.name}</h3>
-            <p className="text-gray-300 text-base sm:text-xl mb-2 sm:mb-4">
-              {format(startDate, 'EEE, h:mm a')} – {format(endDate, 'h:mm a')}
-            </p>
-            <p className="text-gray-300 text-base sm:text-xl mb-2 sm:mb-4">{event.location}</p>
-            <p className="text-gray-400 text-sm sm:text-lg">{event.description}</p>
+            <FadeInSection delay={300}>
+              <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-2 sm:mb-4">{event.name}</h3>
+            </FadeInSection>
+            <FadeInSection delay={600}>
+              <p className="text-gray-300 text-base sm:text-xl mb-2 sm:mb-4">
+                {format(startDate, 'EEE, h:mm a')} – {format(endDate, 'h:mm a')}
+              </p>
+            </FadeInSection>
+            <FadeInSection delay={900}>
+              <p className="text-gray-300 text-base sm:text-xl mb-2 sm:mb-4">{event.location}</p>
+            </FadeInSection>
+            <FadeInSection delay={1200}>
+              <p className="text-gray-400 text-sm sm:text-lg">{event.description}</p>
+            </FadeInSection>
           </div>
         </div>
       </div>
