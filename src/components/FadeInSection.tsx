@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const FadeInSection: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+interface FadeInSectionProps {
+  children: React.ReactNode;
+  delay?: number; // Delay in milliseconds
+}
+
+const FadeInSection: React.FC<FadeInSectionProps> = ({ children, delay = 0 }) => {
   const [isVisible, setVisible] = useState(false);
   const domRef = useRef<HTMLDivElement>(null);
 
@@ -8,7 +13,9 @@ const FadeInSection: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !isVisible) {
-          setVisible(true);
+          setTimeout(() => {
+            setVisible(true);
+          }, delay);
         }
       });
     });
@@ -23,7 +30,7 @@ const FadeInSection: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         observer.unobserve(currentElement);
       }
     };
-  }, [isVisible]);
+  }, [isVisible, delay]);
 
   return (
     <div

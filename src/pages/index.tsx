@@ -4,6 +4,7 @@ import FadeInSection from '../components/FadeInSection';
 import SnapScroll from '../components/SnapScroll';
 import ScrollDownArrow from '../components/ScrollDownArrow';
 import {format} from "date-fns";
+import {Head} from "next/document";
 
 interface Event {
   id: string;
@@ -73,7 +74,8 @@ const Home: React.FC = () => {
     <Layout>
       <div className="h-screen w-screen overflow-hidden">
         <SnapScroll ref={snapScrollRef}>
-          <section className="relative min-h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
+          <section
+            className="relative min-h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
             <FadeInSection>
               <h1 className="text-white text-center font-mono font-extrabold mb-8 w-full" style={{
                 fontSize: 'clamp(3rem, 10vw, 10rem)',
@@ -83,20 +85,27 @@ const Home: React.FC = () => {
               </h1>
             </FadeInSection>
 
-            <FadeInSection>
-              <div className="bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-xl p-6 sm:p-8 shadow-lg max-w-2xl w-full">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-white font-mono">About Us</h2>
-                <p className="text-gray-300 mb-4 sm:mb-6 text-base sm:text-lg font-mono">
-                  Boston University's AI Society: A community of students passionate about artificial intelligence and
-                  machine learning. We host workshops, events, and projects to help students learn and grow in the field
-                  of AI.
-                </p>
+            <FadeInSection delay={300}>
+              <div
+                className="bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-xl p-6 sm:p-8 shadow-lg max-w-2xl w-full">
+                <FadeInSection delay={600}>
+                  <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-white font-mono">About Us</h2>
+                </FadeInSection>
+                <FadeInSection delay={900}>
+                  <p className="text-gray-300 mb-4 sm:mb-6 text-base sm:text-lg font-mono">
+                    Boston University's AI Society: A community of students passionate about artificial intelligence and
+                    machine learning. We host workshops, events, and projects to help students learn and grow in the
+                    field
+                    of AI.
+                  </p>
+                </FadeInSection>
               </div>
             </FadeInSection>
-            <ScrollDownArrow onScroll={handleScroll} />
+            <ScrollDownArrow onScroll={handleScroll}/>
           </section>
 
-          <section className="relative min-h-screen w-full flex flex-col justify-center items-center bg-gradient-to-b from-indigo-900 to-purple-900 px-4 sm:px-6 lg:px-8">
+          <section
+            className="relative min-h-screen w-full flex flex-col justify-center items-center bg-gradient-to-b from-indigo-900 to-purple-900 px-4 sm:px-6 lg:px-8">
             <FadeInSection>
               <h2 className="text-white text-center font-mono font-extrabold mb-8 w-full" style={{
                 fontSize: 'clamp(2rem, 8vw, 6rem)',
@@ -108,7 +117,7 @@ const Home: React.FC = () => {
 
             <FadeInSection>
               {nextEvent
-                ? <EventItem event={nextEvent} />
+                ? <EventItem event={nextEvent}/>
                 : <h3 className="text-white text-center text-xl sm:text-3xl font-bold font-mono">No upcoming events</h3>
               }
             </FadeInSection>
