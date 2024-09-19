@@ -1,0 +1,38 @@
+{
+  "pacman_spawn_position": {"x": 111, "y": 75},
+  "ghost_revive_position": {"x": 111, "y": 147},
+  "pass_intersections": [
+
+  ],
+  "fruit_spawn_position": {"x": 111, "y": 123},
+  "ghosts": [
+    {
+      "name": "ghosts/blinky.json",
+      "spawn_position": {"x": 111, "y": 171},
+      "spawn_direction": "left",
+      "is_released": true,
+      "scatter_tile": {"x": 25, "y": 35}
+    },
+    {
+      "name": "ghosts/pinky.json",
+      "spawn_position": {"x": 111, "y": 147},
+      "spawn_direction": "down",
+      "is_released": false,
+      "scatter_tile": {"x": 2, "y": 35}
+    },
+    {
+      "name": "ghosts/inky.json",
+      "spawn_position": {"x": 95, "y": 147},
+      "spawn_direction": "up",
+      "is_released": false,
+      "scatter_tile": {"x": 27, "y": 0}
+    },
+    {
+      "name": "ghosts/clyde.json",
+      "spawn_position": {"x": 127, "y": 147},
+      "spawn_direction": "up",
+      "is_released": false,
+      "scatter_tile": {"x": 0, "y": 0}
+    }
+  ]
+}

@@ -10,6 +10,7 @@ const Header: React.FC = () => {
   const links: { key: string, value: string }[] = [
     {key: "Home", value: "/"},
     {key: "Events", value: "/events"},
+    {key: "Tournament", value: "/tournament"},
   ];
 
   return (
