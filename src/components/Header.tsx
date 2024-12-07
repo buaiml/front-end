@@ -7,10 +7,17 @@ import { Menu, X } from 'lucide-react';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const links: { key: string, value: string }[] = [
-    {key: "Home", value: "/"},
-    {key: "Events", value: "/events"},
+  const links = [
+    { key: "Home", value: "/" },
+    { key: "Events", value: "/events" },
+    { key: "Team", value: "/team" },
+    { key: "Resources", value: "/resources" },
+    { key: "Gallery", value: "/gallery" },
+    { key: "Contact Us", value: "/contact" },
   ];
+
+  // A reduced set of links for medium-sized screens
+  const reducedLinks = links.filter(link => ["Home", "Events", "Contact Us"].includes(link.key));
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -22,7 +29,8 @@ const Header: React.FC = () => {
               <span className="text-2xl font-bold sm:inline">AI Society</span>
             </Link>
 
-            <div className="hidden md:flex items-center space-x-8">
+            {/* Full menu on lg and above */}
+            <div className="hidden lg:flex items-center space-x-8">
               {links.map((item) => (
                 <Link
                   key={item.key}
@@ -38,10 +46,29 @@ const Header: React.FC = () => {
               ))}
             </div>
 
-            <div className="hidden md:flex">
+            {/* Reduced menu on md to lg (hidden on lg, shown on md and above) */}
+            <div className="hidden md:flex lg:hidden items-center space-x-8">
+              {reducedLinks.map((item) => (
+                <Link
+                  key={item.key}
+                  href={item.value}
+                  className="text-white font-mono text-lg transition-all duration-300 ease-in-out
+                             hover:text-accent3 relative after:content-[''] after:absolute after:bottom-0 after:left-0
+                             after:w-full after:h-0.5 after:bg-accent3
+                             after:transform after:scale-x-0 after:transition-transform after:duration-300
+                             hover:after:scale-x-100"
+                >
+                  {item.key}
+                </Link>
+              ))}
+            </div>
+
+            {/* Social buttons only show on lg and above */}
+            <div className="hidden lg:flex">
               <SocialButtons />
             </div>
 
+            {/* Mobile menu button (visible below md) */}
             <button
               className="md:hidden text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -50,6 +77,7 @@ const Header: React.FC = () => {
             </button>
           </div>
 
+          {/* Mobile Dropdown Menu */}
           {isMenuOpen && (
             <div className="md:hidden mt-4">
               <div className="flex flex-col space-y-4">
