@@ -39,8 +39,8 @@ const EventItem: React.FC<{ event: Event }> = ({ event }) => {
 };
 
 const Events: React.FC = () => {
-  const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]); // Renamed from `events`.
-  const [pastEvents, setPastEvents] = useState<Event[]>([]); // Added for past events.
+  const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
+  const [pastEvents, setPastEvents] = useState<Event[]>([]);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -48,13 +48,18 @@ const Events: React.FC = () => {
         const response = await fetch('/api/event_fetcher');
         if (response.ok) {
           const fetchedEvents: Event[] = await response.json();
-          const now = Date.now() / 1000; // Added to get current timestamp.
-          const upcoming = fetchedEvents.filter(event => event.start_time > now); // Filtering events into upcoming and past. Renamed to upcoming.
-          const past = fetchedEvents.filter(event => event.end_time <= now); // Past events.
+          const now = Date.now() / 1000;
 
-          setUpcomingEvents(upcoming); // Directly updating.
-          setPastEvents(past); 
-          // Removed the entire line here that filters upcomingEvents cause it was just doing the same filter again.
+          const upcoming = fetchedEvents
+            .filter(event => event.start_time > now)
+            .sort((a, b) => a.start_time - b.start_time);
+
+          const past = fetchedEvents
+            .filter(event => event.end_time <= now)
+            .sort((a, b) => b.end_time - a.end_time); // Sort so most recent past events show first
+
+          setUpcomingEvents(upcoming);
+          setPastEvents(past);
         }
       } catch (error) {
         console.error('Failed to fetch events:', error);
@@ -70,15 +75,18 @@ const Events: React.FC = () => {
         <div className="pt-24 pb-16">
           {/* Upcoming Events */}
           <FadeInSection>
-            <h1 className="text-white text-center font-mono font-extrabold mb-12 w-full px-4" style={{
-              fontSize: 'clamp(2.5rem, 8vw, 5rem)',
-              lineHeight: '1.1'
-            }}>
+            <h1
+              className="text-white text-center font-mono font-extrabold mb-12 w-full px-4"
+              style={{
+                fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+                lineHeight: '1.1'
+              }}
+            >
               Upcoming Events
             </h1>
           </FadeInSection>
 
-          {upcomingEvents.length > 0 ? ( // Renamed from 'events'.
+          {upcomingEvents.length > 0 ? (
             upcomingEvents.map((event, index) => (
               <FadeInSection key={event.id} delay={index * 200}>
                 <EventItem event={event} />
@@ -86,30 +94,33 @@ const Events: React.FC = () => {
             ))
           ) : (
             <FadeInSection>
-              <h3 className="text-white text-center text-xl sm:text-3xl font-bold font-mono">No upcoming events... Check back soon!</h3>
+              <h3 className="text-white text-center text-xl sm:text-3xl font-bold font-mono px-4 max-w-sm mx-auto">
+                No upcoming events... Check back soon!
+              </h3>
             </FadeInSection>
           )}
 
-          {/* Past Events*/}
+          {/* Separator before Past Events, with controlled width and padding for mobile */}
           <FadeInSection>
-            <h1 className="text-white text-center font-mono font-extrabold mt-16 mb-12 w-full px-4" style={{
-              fontSize: 'clamp(2.5rem, 8vw, 5rem)',
-              lineHeight: '1.1'
-            }}>
-              Past Events
-            </h1>
+            <div className="my-16 flex items-center justify-center px-4 max-w-sm mx-auto text-center">
+              <hr className="border-gray-300 border-t w-1/4 opacity-50 mr-2" />
+              <span className="text-white font-mono whitespace-nowrap">Past Events</span>
+              <hr className="border-gray-300 border-t w-1/4 opacity-50 ml-2" />
+            </div>
           </FadeInSection>
 
-          {pastEvents.length > 0 ? ( // Render past events
+          {pastEvents.length > 0 ? (
             pastEvents.map((event, index) => (
               <FadeInSection key={event.id} delay={index * 200}>
                 <EventItem event={event} />
               </FadeInSection>
             ))
           ) : (
-          <FadeInSection>
-            <h3 className="text-white text-center text-xl sm:text-3xl font-bold font-mono">No past events yet!</h3>
-          </FadeInSection>
+            <FadeInSection>
+              <h3 className="text-white text-center text-xl sm:text-3xl font-bold font-mono px-4 max-w-sm mx-auto">
+                No past events yet!
+              </h3>
+            </FadeInSection>
           )}
         </div>
       </div>
