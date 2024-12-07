@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Layout from '@/components/Layout';
 import FadeInSection from '@/components/FadeInSection';
-import { Award } from 'lucide-react';
+import { Award, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface PrizeInfo {
   id: string;
@@ -26,6 +26,7 @@ const Tournament: React.FC = () => {
     { id: '2', place: '2nd Place', prize: '$500' },
     { id: '3', place: '3rd Place', prize: '$250' },
   ]);
+  const [showInfo, setShowInfo] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -47,23 +48,27 @@ const Tournament: React.FC = () => {
         <iframe
           ref={iframeRef}
           src="/pacman/index.html"
-          className="absolute top-0 left-0 w-full h-full border-0 pointer-events-none"
+          className="absolute top-0 left-0 w-full h-full border-0"
+          style={{ pointerEvents: showInfo ? 'none' : 'auto' }}
           title="Pacman Game Background"
         />
-        <div className="relative z-10 h-full flex flex-col justify-center items-center p-4">
+        <div
+          className={`relative z-10 h-full flex flex-col justify-center items-center p-4 transition-all duration-500 ease-in-out ${
+            showInfo ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+        >
           <FadeInSection>
-            <h1 className="text-white text-center font-mono font-extrabold mb-4 w-full px-4" style={{
-              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-              lineHeight: '1.1'
-            }}>
-              Pacman AI Tournament
-            </h1>
-          </FadeInSection>
-
-          <FadeInSection>
-            <p className="text-gray-300 text-center text-sm sm:text-base font-mono mb-6 max-w-2xl">
-              Join us for an exciting day of AI-powered Pacman battles! Showcase your reinforcement learning skills and compete for amazing prizes.
-            </p>
+            <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg p-4 mb-6">
+              <h1 className="text-white text-center font-mono font-extrabold mb-4 w-full px-4" style={{
+                fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                lineHeight: '1.1'
+              }}>
+                Pacman AI Tournament
+              </h1>
+              <p className="text-gray-300 text-center text-sm sm:text-base font-mono mb-6 max-w-2xl">
+                Join us for an exciting day of AI-powered Pacman battles! Showcase your reinforcement learning skills and compete for amazing prizes.
+              </p>
+            </div>
           </FadeInSection>
 
           <FadeInSection>
@@ -88,11 +93,17 @@ const Tournament: React.FC = () => {
           </FadeInSection>
 
           <FadeInSection>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 font-mono text-sm">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 font-mono text-sm mb-4">
               Register Now
             </button>
           </FadeInSection>
         </div>
+        <button
+          onClick={() => setShowInfo(!showInfo)}
+          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg text-white rounded-full p-2 transition-all duration-300 ease-in-out hover:bg-opacity-20"
+        >
+          {showInfo ? <ChevronDown size={24} /> : <ChevronUp size={24} />}
+        </button>
       </div>
     </Layout>
   );
