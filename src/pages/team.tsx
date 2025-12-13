@@ -25,12 +25,12 @@ const teamData: TeamCategory[] = [
   {
     title: 'Officers',
     members: [
-      // { name: 'Baiwen Zheng', role: 'Outreach', photo: '/images/baiwen-pic.png', linkedin: 'https://linkedin.com/in/baiwenzheng' }, ?
-      // { name: 'Danai Cabero', photo: '/images/danai-pic.png', linkedin: 'https://linkedin.com/in/danaicabero' }, ?
+      { name: 'Baiwen Zheng', role: 'Outreach', photo: '/images/baiwen-pic.png', linkedin: 'https://linkedin.com/in/baiwenzheng' },
+      { name: 'Danai Cabero', photo: '/images/danai-pic.png', linkedin: 'https://linkedin.com/in/danaicabero' },
       { name: 'Irene Deng', role: 'Treasurer', photo: '/images/irene-pic.png', linkedin: 'https://linkedin.com/in/irene-d-38551a219' },
-      { name: 'William Dakare', role: 'Tech', photo: '/images/william-pic.png', linkedin: 'https://www.linkedin.com/in/william-dakare' },
-      // { name: 'Sabine Ambrosi', photo: '/images/sabine-pic.png', linkedin: 'https://linkedin.com/in/sabine-ambrosi' }, ?
+      { name: 'Sabine Ambrosi', photo: '/images/sabine-pic.png', linkedin: 'https://linkedin.com/in/sabine-ambrosi' },
       { name: 'Varsha Athreya', role: 'Secretary', photo: '/images/varsha-pic.png', linkedin: 'https://linkedin.com/in/varsha-athreya' },
+      { name: 'William Dakare', role: 'Tech', photo: '/images/william-pic.png', linkedin: 'https://www.linkedin.com/in/william-dakare' },
       // { name: 'Wes Jorgensen', photo: '/images/wes-pic.png', linkedin: 'https://linkedin.com/in/wes-jorgensen-b5530a20b' }, ?
     ],
   },
