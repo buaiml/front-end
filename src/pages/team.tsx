@@ -4,8 +4,9 @@ import FadeInSection from '../components/FadeInSection';
 
 interface TeamMember {
   name: string;
-  photo: string; 
-  linkedin: string; 
+  photo: string;
+  role?: string;
+  linkedin: string;
 }
 
 interface TeamCategory {
@@ -17,22 +18,20 @@ const teamData: TeamCategory[] = [
   {
     title: 'Presidents',
     members: [
-      { name: 'Alan Nguyen', photo: '/images/alan-pic.png', linkedin: 'https://linkedin.com/in/nguyendesu' },
-      { name: 'Collin Barber', photo: '/images/collin-pic.png', linkedin: 'https://linkedin.com/in/collin-barber-14489524a' },
+      { name: 'Collin Barber', role: 'President', photo: '/images/collin-pic.png', linkedin: 'https://linkedin.com/in/collin-barber-14489524a' },
+      { name: 'Denali Schlesinger', role: 'Vice President', photo: '/images/denali-pic.jpeg', linkedin: 'https://linkedin.com/in/denalischlesinger' },
     ],
   },
   {
     title: 'Officers',
     members: [
-      { name: 'Anagha Nair', photo: '/images/anagha-pic.png', linkedin: 'https://linkedin.com/in/anagha-nair-152794200' },
-      { name: 'Baiwen Zheng', photo: '/images/baiwen-pic.png', linkedin: 'https://linkedin.com/in/baiwenzheng' },
-      { name: 'Danai Cabero', photo: '/images/danai-pic.png', linkedin: 'https://linkedin.com/in/danaicabero' },
-      { name: 'Denali Schlesinger', photo: '/images/denali-pic.jpeg', linkedin: 'https://linkedin.com/in/denalischlesinger' },
-      { name: 'Felix Fan', photo: '/images/felix-pic.png', linkedin: 'https://linkedin.com/in/felix-fan-055115173' },
-      { name: 'Irene Deng', photo: '/images/irene-pic.png', linkedin: 'https://linkedin.com/in/irene-d-38551a219' },
-      { name: 'Sabine Ambrosi', photo: '/images/sabine-pic.png', linkedin: 'https://linkedin.com/in/sabine-ambrosi' },
-      { name: 'Varsha Athreya', photo: '/images/varsha-pic.png', linkedin: 'https://linkedin.com/in/varsha-athreya' },
-      { name: 'Wes Jorgensen', photo: '/images/wes-pic.png', linkedin: 'https://linkedin.com/in/wes-jorgensen-b5530a20b' },
+      // { name: 'Baiwen Zheng', role: 'Outreach', photo: '/images/baiwen-pic.png', linkedin: 'https://linkedin.com/in/baiwenzheng' }, ?
+      // { name: 'Danai Cabero', photo: '/images/danai-pic.png', linkedin: 'https://linkedin.com/in/danaicabero' }, ?
+      { name: 'Irene Deng', role: 'Treasurer', photo: '/images/irene-pic.png', linkedin: 'https://linkedin.com/in/irene-d-38551a219' },
+      { name: 'William Dakare', role: 'Tech', photo: '/images/william-pic.png', linkedin: 'https://www.linkedin.com/in/william-dakare' },
+      // { name: 'Sabine Ambrosi', photo: '/images/sabine-pic.png', linkedin: 'https://linkedin.com/in/sabine-ambrosi' }, ?
+      { name: 'Varsha Athreya', role: 'Secretary', photo: '/images/varsha-pic.png', linkedin: 'https://linkedin.com/in/varsha-athreya' },
+      // { name: 'Wes Jorgensen', photo: '/images/wes-pic.png', linkedin: 'https://linkedin.com/in/wes-jorgensen-b5530a20b' }, ?
     ],
   },
   {
@@ -43,8 +42,25 @@ const teamData: TeamCategory[] = [
       { name: 'Ivan Khramtchenko', photo: '/images/ivan-pic.png', linkedin: 'https://linkedin.com/in/ivan-khr' }
     ],
   },
+  {
+    title: 'Past Officers',
+    members: [
+      { name: 'Alan Nguyen', role: 'President', photo: '/images/alan-pic.png', linkedin: 'https://linkedin.com/in/nguyendesu' },
+    ]
+  }
 ];
 
+const Role = (role?: string) => {
+  if (role) {
+    return <h6
+      className="font-medium text-white mt-2 font-mono"
+    >
+      {role}
+    </h6>
+  }
+
+  return
+}
 
 const Team: React.FC = () => {
   return (
@@ -55,7 +71,7 @@ const Team: React.FC = () => {
           <h1
             className="text-white text-center font-mono font-extrabold mb-16 w-full"
             style={{
-              fontSize: 'clamp(3.5rem, 7vw, 5rem)', 
+              fontSize: 'clamp(3.5rem, 7vw, 5rem)',
               lineHeight: '1.1',
               marginTop: '6rem', // lower
             }}
@@ -92,11 +108,12 @@ const Team: React.FC = () => {
                     <h3
                       className="text-lg sm:text-xl font-medium text-white mt-4 font-mono"
                       style={{
-                        fontSize: 'clamp(1rem, 2.5vw, 1.5rem)', 
+                        fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
                       }}
                     >
                       {member.name}
                     </h3>
+                    {Role(member.role)}
                     <a
                       href={member.linkedin}
                       target="_blank"
