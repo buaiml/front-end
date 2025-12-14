@@ -25,10 +25,12 @@ const teamData: TeamCategory[] = [
   {
     title: 'Officers',
     members: [
+      { name: 'Aakash Kumar', role: 'Speaker', photo: '/images/aakash-pic.jpg', linkedin: 'https://www.linkedin.com/in/aakashrkumar/' },
+      { name: 'Achyut Shastri', role: 'Speaker', photo: '/images/achyut-pic.webp', linkedin: 'https://www.linkedin.com/in/achyut-shastri-g/' },
       { name: 'Baiwen Zheng', role: 'Outreach', photo: '/images/baiwen-pic.png', linkedin: 'https://linkedin.com/in/baiwenzheng' },
-      { name: 'Danai Cabero', photo: '/images/danai-pic.png', linkedin: 'https://linkedin.com/in/danaicabero' },
+      { name: 'Danai Cabero', role: 'Events', photo: '/images/danai-pic.png', linkedin: 'https://linkedin.com/in/danaicabero' },
       { name: 'Irene Deng', role: 'Treasurer', photo: '/images/irene-pic.png', linkedin: 'https://linkedin.com/in/irene-d-38551a219' },
-      { name: 'Sabine Ambrosi', photo: '/images/sabine-pic.png', linkedin: 'https://linkedin.com/in/sabine-ambrosi' },
+      { name: 'Sabine Ambrosi', role: 'Public Relations', photo: '/images/sabine-pic.png', linkedin: 'https://linkedin.com/in/sabine-ambrosi' },
       { name: 'Varsha Athreya', role: 'Secretary', photo: '/images/varsha-pic.png', linkedin: 'https://linkedin.com/in/varsha-athreya' },
       { name: 'William Dakare', role: 'Tech', photo: '/images/william-pic.png', linkedin: 'https://www.linkedin.com/in/william-dakare' },
       // { name: 'Wes Jorgensen', photo: '/images/wes-pic.png', linkedin: 'https://linkedin.com/in/wes-jorgensen-b5530a20b' }, ?
@@ -46,6 +48,8 @@ const teamData: TeamCategory[] = [
     title: 'Past Officers',
     members: [
       { name: 'Alan Nguyen', role: 'President', photo: '/images/alan-pic.png', linkedin: 'https://linkedin.com/in/nguyendesu' },
+      { name: 'Felix Fan', role: 'Marketing', photo: '/images/felix-pic.png', linkedin: 'https://linkedin.com/in/felix-fan-055115173' },
+      { name: 'Wes Jorgensen', photo: '/images/wes-pic.png', linkedin: 'https://linkedin.com/in/wes-jorgensen-b5530a20b' },
     ]
   }
 ];
