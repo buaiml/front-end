@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Layout from '@/components/Layout';
 import FadeInSection from '@/components/FadeInSection';
 
@@ -160,10 +161,13 @@ const ImageCarousel: React.FC<{ section: { title: string; images: { src: string;
         <div
           className="relative flex justify-center items-center overflow-hidden w-full h-64 sm:h-80 md:h-[500px]"
         >
-          <img
+          <Image
             src={section.images[currentIndex].src}
             alt={section.images[currentIndex].alt}
-            className="rounded-lg shadow-lg object-contain w-full h-full"
+            fill
+            className="rounded-lg shadow-lg object-contain"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 896px"
+            priority={currentIndex === 0}
           />
 
           {/* Arrows remain in place, same functionality */}

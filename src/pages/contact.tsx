@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "@/components/Layout";
+import { SOCIAL_LINKS, CONTACT } from "@/config/constants";
 
 const ContactUs: React.FC = () => {
   return (
@@ -15,10 +16,10 @@ const ContactUs: React.FC = () => {
           </p>
           <p className="text-center mb-6">
             <a
-              href="mailto:buais@bu.edu"
+              href={`mailto:${CONTACT.email}`}
               className="text-blue-400 underline hover:text-blue-300 font-mono text-xl"
             >
-              buais@bu.edu
+              {CONTACT.email}
             </a>
           </p>
 
@@ -27,7 +28,7 @@ const ContactUs: React.FC = () => {
             <p className="text-white mb-2 font-mono">Join our community:</p>
             <div className="flex justify-center space-x-4">
               <a
-                href="https://discord.gg/TyubkeGSXj"
+                href={SOCIAL_LINKS.discord}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-400 hover:underline font-mono"
@@ -35,7 +36,7 @@ const ContactUs: React.FC = () => {
                 Discord
               </a>
               <a
-                href="https://www.instagram.com/buaisociety?igsh=ZG9pd3FhOXhzNnQy"
+                href={SOCIAL_LINKS.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-400 hover:underline font-mono"

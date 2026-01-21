@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Image from "next/image";
 import SocialButtons from "@/components/SocialButtons";
 import { Menu, X } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+
+  const isActive = (path: string) => router.pathname === path;
 
   const links = [
     { key: "Home", value: "/" },
@@ -35,11 +39,14 @@ const Header: React.FC = () => {
                 <Link
                   key={item.key}
                   href={item.value}
-                  className="text-white font-mono text-lg transition-all duration-300 ease-in-out
-                             hover:text-accent3 relative after:content-[''] after:absolute after:bottom-0 after:left-0
+                  className={`font-mono text-lg transition-all duration-300 ease-in-out
+                             relative after:content-[''] after:absolute after:bottom-0 after:left-0
                              after:w-full after:h-0.5 after:bg-accent3
-                             after:transform after:scale-x-0 after:transition-transform after:duration-300
-                             hover:after:scale-x-100"
+                             after:transition-transform after:duration-300
+                             ${isActive(item.value)
+                               ? 'text-accent3 after:scale-x-100'
+                               : 'text-white hover:text-accent3 after:scale-x-0 hover:after:scale-x-100'
+                             }`}
                 >
                   {item.key}
                 </Link>
@@ -52,11 +59,14 @@ const Header: React.FC = () => {
                 <Link
                   key={item.key}
                   href={item.value}
-                  className="text-white font-mono text-lg transition-all duration-300 ease-in-out
-                             hover:text-accent3 relative after:content-[''] after:absolute after:bottom-0 after:left-0
+                  className={`font-mono text-lg transition-all duration-300 ease-in-out
+                             relative after:content-[''] after:absolute after:bottom-0 after:left-0
                              after:w-full after:h-0.5 after:bg-accent3
-                             after:transform after:scale-x-0 after:transition-transform after:duration-300
-                             hover:after:scale-x-100"
+                             after:transition-transform after:duration-300
+                             ${isActive(item.value)
+                               ? 'text-accent3 after:scale-x-100'
+                               : 'text-white hover:text-accent3 after:scale-x-0 hover:after:scale-x-100'
+                             }`}
                 >
                   {item.key}
                 </Link>
@@ -87,8 +97,8 @@ const Header: React.FC = () => {
                   <Link
                     key={item.key}
                     href={item.value}
-                    className="text-white font-mono text-lg transition-all duration-300 ease-in-out
-                               hover:text-accent3"
+                    className={`font-mono text-lg transition-all duration-300 ease-in-out
+                               ${isActive(item.value) ? 'text-accent3' : 'text-white hover:text-accent3'}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.key}
