@@ -170,12 +170,14 @@ const ImageCarousel: React.FC<{ section: { title: string; images: { src: string;
           <button
             onClick={handlePrev}
             className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 text-gray-900 p-1 sm:p-2 rounded-full hover:bg-opacity-70 transition"
+            aria-label="Previous image"
           >
             &#8249;
           </button>
           <button
             onClick={handleNext}
             className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 text-gray-900 p-1 sm:p-2 rounded-full hover:bg-opacity-70 transition"
+            aria-label="Next image"
           >
             &#8250;
           </button>

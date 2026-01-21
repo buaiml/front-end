@@ -33,21 +33,14 @@ const teamData: TeamCategory[] = [
       { name: 'Sabine Ambrosi', role: 'Public Relations', photo: '/images/sabine-pic.png', linkedin: 'https://linkedin.com/in/sabine-ambrosi' },
       { name: 'Varsha Athreya', role: 'Secretary', photo: '/images/varsha-pic.png', linkedin: 'https://linkedin.com/in/varsha-athreya' },
       { name: 'William Dakare', role: 'Tech', photo: '/images/william-pic.png', linkedin: 'https://www.linkedin.com/in/william-dakare' },
-      // { name: 'Wes Jorgensen', photo: '/images/wes-pic.png', linkedin: 'https://linkedin.com/in/wes-jorgensen-b5530a20b' }, ?
-    ],
-  },
-  {
-    title: 'Helpers',
-    members: [
-      { name: 'Amanda Eng', photo: '/images/amanda-pic.jpeg', linkedin: 'https://linkedin.com/in/amanda-k-eng' },
       { name: 'Dylan Lee', photo: '/images/dylan-pic.png', linkedin: 'https://linkedin.com/in/dylan-jae-lee' },
-      { name: 'Ivan Khramtchenko', photo: '/images/ivan-pic.png', linkedin: 'https://linkedin.com/in/ivan-khr' }
     ],
   },
   {
     title: 'Past Officers',
     members: [
       { name: 'Alan Nguyen', role: 'President', photo: '/images/alan-pic.png', linkedin: 'https://linkedin.com/in/nguyendesu' },
+      { name: 'Amanda Eng', photo: '/images/amanda-pic.jpeg', linkedin: 'https://linkedin.com/in/amanda-k-eng' },
       { name: 'Felix Fan', role: 'Marketing', photo: '/images/felix-pic.png', linkedin: 'https://linkedin.com/in/felix-fan-055115173' },
       { name: 'Wes Jorgensen', photo: '/images/wes-pic.png', linkedin: 'https://linkedin.com/in/wes-jorgensen-b5530a20b' },
     ]
@@ -63,7 +56,7 @@ const Role = (role?: string) => {
     </h6>
   }
 
-  return
+  return null;
 }
 
 const Team: React.FC = () => {

@@ -1,0 +1,52 @@
+import React from 'react';
+import { format } from 'date-fns';
+
+export interface Event {
+  id: string;
+  name: string;
+  description: string;
+  location: string;
+  start_time: number;
+  end_time: number;
+}
+
+interface EventItemProps {
+  event: Event;
+  variant?: 'home' | 'list';
+}
+
+const EventItem: React.FC<EventItemProps> = ({ event, variant = 'list' }) => {
+  const startDate = new Date(event.start_time * 1000);
+  const endDate = new Date(event.end_time * 1000);
+
+  const bgClass = variant === 'home'
+    ? 'bg-black bg-opacity-50'
+    : 'bg-white bg-opacity-10';
+
+  const wrapperClass = variant === 'home'
+    ? 'w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'
+    : 'w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8';
+
+  return (
+    <div className={wrapperClass}>
+      <div className={`${bgClass} backdrop-filter backdrop-blur-lg shadow-lg rounded-lg overflow-hidden`}>
+        <div className="p-6 sm:p-8 flex flex-col sm:flex-row items-start font-mono">
+          <div className="mb-4 sm:mb-0 sm:mr-8 text-center">
+            <div className="text-4xl sm:text-6xl font-bold text-white">{format(startDate, 'd')}</div>
+            <div className="text-lg sm:text-xl uppercase text-gray-300">{format(startDate, 'MMM')}</div>
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-2 sm:mb-4">{event.name}</h3>
+            <p className="text-gray-300 text-base sm:text-xl mb-2 sm:mb-4">
+              {format(startDate, 'EEE, h:mm a')} – {format(endDate, 'h:mm a')}
+            </p>
+            <p className="text-gray-300 text-base sm:text-xl mb-2 sm:mb-4">{event.location}</p>
+            <p className="text-gray-400 text-sm sm:text-lg">{event.description}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EventItem;

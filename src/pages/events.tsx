@@ -1,50 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@/components/Layout';
 import FadeInSection from '@/components/FadeInSection';
-import { format } from 'date-fns';
-
-interface Event {
-  id: string;
-  name: string;
-  description: string;
-  location: string;
-  start_time: number;
-  end_time: number;
-}
-
-const EventItem: React.FC<{ event: Event }> = ({ event }) => {
-  const startDate = new Date(event.start_time * 1000);
-  const endDate = new Date(event.end_time * 1000);
-
-  return (
-    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-      <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg overflow-hidden">
-        <div className="p-6 sm:p-8 flex flex-col sm:flex-row items-start font-mono">
-          <div className="mb-4 sm:mb-0 sm:mr-8 text-center">
-            <div className="text-4xl sm:text-6xl font-bold text-white">{format(startDate, 'd')}</div>
-            <div className="text-lg sm:text-xl uppercase text-gray-300">{format(startDate, 'MMM')}</div>
-          </div>
-          <div className="flex-grow">
-            <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-2 sm:mb-4">{event.name}</h3>
-            <p className="text-gray-300 text-base sm:text-xl mb-2 sm:mb-4">
-              {format(startDate, 'EEE, h:mm a')} – {format(endDate, 'h:mm a')}
-            </p>
-            <p className="text-gray-300 text-base sm:text-xl mb-2 sm:mb-4">{event.location}</p>
-            <p className="text-gray-400 text-sm sm:text-lg">{event.description}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import EventItem, { Event } from '@/components/EventItem';
 
 const Events: React.FC = () => {
   const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
   const [pastEvents, setPastEvents] = useState<Event[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
+        setIsLoading(true);
         const response = await fetch('/api/event_fetcher');
         if (response.ok) {
           const fetchedEvents: Event[] = await response.json();
@@ -63,6 +30,8 @@ const Events: React.FC = () => {
         }
       } catch (error) {
         console.error('Failed to fetch events:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -86,7 +55,13 @@ const Events: React.FC = () => {
             </h1>
           </FadeInSection>
 
-          {upcomingEvents.length > 0 ? (
+          {isLoading ? (
+            <FadeInSection>
+              <div className="text-white text-center text-xl sm:text-3xl font-bold font-mono px-4">
+                Loading events...
+              </div>
+            </FadeInSection>
+          ) : upcomingEvents.length > 0 ? (
             upcomingEvents.map((event, index) => (
               <FadeInSection key={event.id} delay={index * 200}>
                 <EventItem event={event} />
@@ -109,7 +84,13 @@ const Events: React.FC = () => {
             </div>
           </FadeInSection>
 
-          {pastEvents.length > 0 ? (
+          {isLoading ? (
+            <FadeInSection>
+              <div className="text-white text-center text-xl sm:text-3xl font-bold font-mono px-4">
+                Loading events...
+              </div>
+            </FadeInSection>
+          ) : pastEvents.length > 0 ? (
             pastEvents.map((event, index) => (
               <FadeInSection key={event.id} delay={index * 200}>
                 <EventItem event={event} />
