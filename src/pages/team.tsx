@@ -32,6 +32,7 @@ const teamData: TeamCategory[] = [
       { name: 'Danai Cabero', role: 'Events', photo: '/images/danai-pic.png', linkedin: 'https://linkedin.com/in/danaicabero' },
       { name: 'Dylan Lee', photo: '/images/dylan-pic.png', linkedin: 'https://linkedin.com/in/dylan-jae-lee' },
       { name: 'Irene Deng', role: 'Treasurer', photo: '/images/irene-pic.png', linkedin: 'https://linkedin.com/in/irene-d-38551a219' },
+      { name: 'Nathaniel Lee', role: 'Tech', photo: '/images/nathaniel.jpeg', linkedin: 'https://www.linkedin.com/in/nathaniel-jm-lee' },
       { name: 'Sabine Ambrosi', role: 'Public Relations', photo: '/images/sabine-pic.png', linkedin: 'https://linkedin.com/in/sabine-ambrosi' },
       { name: 'Varsha Athreya', role: 'Secretary', photo: '/images/varsha-pic.png', linkedin: 'https://linkedin.com/in/varsha-athreya' },
       { name: 'William Dakare', role: 'Tech', photo: '/images/william-pic.png', linkedin: 'https://www.linkedin.com/in/william-dakare' },
