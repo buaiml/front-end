@@ -12,71 +12,71 @@
 	const photos = [
 		{
 			src: "/images/10_11.jpeg",
-			left: "4%",
-			top: "6%",
-			minW: 90,
-			vw: 17.5,
-			maxW: 280,
+			left: "6%",
+			top: "4%",
+			minW: 140,
+			vw: 28,
+			maxW: 450,
 			ratio: 210 / 160,
 			rot: -8,
 		},
 		{
 			src: "/images/10_18.jpeg",
-			left: "79%",
-			top: "5%",
-			minW: 82,
-			vw: 15.8,
-			maxW: 250,
+			left: "73%",
+			top: "3%",
+			minW: 130,
+			vw: 25,
+			maxW: 400,
 			ratio: 190 / 220,
 			rot: 6,
 		},
 		{
 			src: "/images/10_25.jpeg",
-			left: "2%",
-			top: "32%",
-			minW: 78,
-			vw: 15,
-			maxW: 240,
+			left: "4%",
+			top: "34%",
+			minW: 125,
+			vw: 24,
+			maxW: 385,
 			ratio: 180 / 190,
 			rot: 5,
 		},
 		{
 			src: "/images/10_26.jpg",
-			left: "80%",
-			top: "35%",
-			minW: 85,
-			vw: 16.7,
-			maxW: 260,
+			left: "75%",
+			top: "36%",
+			minW: 135,
+			vw: 27,
+			maxW: 420,
 			ratio: 200 / 160,
 			rot: -6,
 		},
 		{
 			src: "/images/11_1.jpeg",
-			left: "5%",
-			top: "66%",
-			minW: 92,
-			vw: 18.3,
-			maxW: 290,
+			left: "7%",
+			top: "68%",
+			minW: 145,
+			vw: 29,
+			maxW: 465,
 			ratio: 220 / 170,
 			rot: 4,
 		},
 		{
 			src: "/images/11_2.jpeg",
-			left: "77%",
-			top: "65%",
-			minW: 88,
-			vw: 17.5,
-			maxW: 280,
+			left: "70%",
+			top: "66%",
+			minW: 140,
+			vw: 28,
+			maxW: 450,
 			ratio: 210 / 190,
 			rot: -4,
 		},
 		{
 			src: "/images/9_20.jpeg",
-			left: "40%",
-			top: "4%",
-			minW: 85,
-			vw: 16.7,
-			maxW: 260,
+			left: "36%",
+			top: "2%",
+			minW: 135,
+			vw: 27,
+			maxW: 420,
 			ratio: 200 / 140,
 			rot: 3,
 		},
@@ -103,7 +103,7 @@
 <div class="flex flex-col">
 	<!-- Poster board hero -->
 	<section
-		class="relative min-h-[560px] overflow-hidden bg-blood-red px-6 pt-24 pb-16 sm:min-h-[680px] sm:pt-28 md:min-h-[760px] lg:min-h-[820px]"
+		class="relative min-h-[640px] overflow-hidden bg-blood-red px-6 pt-24 pb-16 sm:min-h-[780px] sm:pt-28 md:min-h-[880px] lg:min-h-[960px]"
 	>
 		<div class="pointer-events-none absolute inset-0">
 			{#each photos as p}
@@ -121,7 +121,7 @@
 		</div>
 
 		<div
-			class="relative mx-auto flex min-h-[560px] max-w-6xl items-center justify-center sm:min-h-[680px] md:min-h-[760px] lg:min-h-[820px]"
+			class="relative mx-auto flex min-h-[640px] max-w-6xl items-center justify-center sm:min-h-[780px] md:min-h-[880px] lg:min-h-[960px]"
 		>
 			<div
 				class="relative z-10 max-w-[85vw] -rotate-1 rounded bg-jasmine-900 px-6 py-7 text-center shadow-2xl sm:max-w-lg sm:px-10 sm:py-11"
