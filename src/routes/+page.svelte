@@ -103,9 +103,9 @@
 <div class="flex flex-col">
 	<!-- Poster board hero -->
 	<section
-		class="relative min-h-[640px] overflow-hidden bg-blood-red px-6 pt-24 pb-16 sm:min-h-[780px] sm:pt-28 md:min-h-[880px] lg:min-h-[960px]"
+		class="relative min-h-0 overflow-hidden bg-blood-red px-6 pt-24 pb-16 sm:min-h-[780px] sm:pt-28 md:min-h-[880px] lg:min-h-[960px]"
 	>
-		<div class="pointer-events-none absolute inset-0">
+		<div class="pointer-events-none absolute inset-0 hidden sm:block">
 			{#each photos as p}
 				<img
 					src={p.src}
@@ -121,7 +121,7 @@
 		</div>
 
 		<div
-			class="relative mx-auto flex min-h-[640px] max-w-6xl items-center justify-center sm:min-h-[780px] md:min-h-[880px] lg:min-h-[960px]"
+			class="relative mx-auto flex max-w-6xl items-center justify-center sm:min-h-[780px] md:min-h-[880px] lg:min-h-[960px]"
 		>
 			<div
 				class="relative z-10 max-w-[85vw] -rotate-1 rounded bg-jasmine-900 px-6 py-7 text-center shadow-2xl sm:max-w-lg sm:px-10 sm:py-11"
