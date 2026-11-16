@@ -10,12 +10,13 @@
 		{ key: 'Events', href: '/events' },
 		{ key: 'Team', href: '/team' },
 		{ key: 'Project Groups', href: '/project-groups' },
-		{ key: 'Resources', href: '/resources' },
+		{ key: 'Blogs', href: '/blogs' },
 		{ key: 'Gallery', href: '/gallery' },
 		{ key: 'Contact Us', href: '/contact' }
 	];
 
-	const isActive = (href: string) => page.url.pathname === href;
+	const isActive = (href: string) =>
+		href === '/' ? page.url.pathname === '/' : page.url.pathname.startsWith(href);
 </script>
 
 <header class="fixed top-0 right-0 left-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
