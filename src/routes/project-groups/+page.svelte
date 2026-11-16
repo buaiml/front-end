@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { ArrowUpRight, Mail } from 'lucide-svelte';
+	import { ArrowRight, ArrowUpRight } from 'lucide-svelte';
+	import SiteFooter from '$lib/components/SiteFooter.svelte';
 	import { PROJECT_GROUPS } from '$lib/project-groups';
-	import { SIGNUP_FORM_URL, SOCIAL_LINKS, CONTACT } from '$lib/constants';
+	import { SIGNUP_FORM_URL } from '$lib/constants';
 </script>
 
 <div class="flex flex-col">
@@ -43,6 +44,16 @@
 					</span>
 					<h2 class="text-3xl font-bold text-prussian-blue sm:text-4xl">{group.title}</h2>
 					<p class="leading-relaxed text-deep-teal-100">{@html group.description}</p>
+					<div class="mt-auto flex flex-col gap-1 border-t border-deep-teal-900 pt-5">
+						<p class="text-sm text-deep-teal-300">Fresh from the lab: wins, dead ends, and everything in between.</p>
+						<a
+							href="/blogs?tag={group.blogTag}"
+							class="group flex w-fit items-center gap-2 font-semibold text-brick-ember underline-offset-4 hover:underline"
+						>
+							Read the latest from {group.title}
+							<ArrowRight size={16} class="transition-transform group-hover:translate-x-1" />
+						</a>
+					</div>
 				</div>
 			</section>
 		{/each}
@@ -58,23 +69,5 @@
 		</a>
 	</div>
 
-	<!-- Footer -->
-	<footer class="flex flex-col items-center gap-5 bg-blood-red-100 px-6 py-14 text-center">
-		<span class="text-lg font-semibold text-jasmine">BUAI Society</span>
-		<div class="flex items-center gap-7">
-			<a href={SOCIAL_LINKS.instagram} aria-label="Instagram" class="opacity-70 transition-opacity hover:opacity-100">
-				<img src="/images/instagram-alt.svg" alt="" class="size-5" />
-			</a>
-			<a href={SOCIAL_LINKS.linkedin} aria-label="LinkedIn" class="opacity-70 transition-opacity hover:opacity-100">
-				<img src="/images/linkedin-alt.svg" alt="" class="size-5" />
-			</a>
-			<a href={SOCIAL_LINKS.discord} aria-label="Discord" class="opacity-70 transition-opacity hover:opacity-100">
-				<img src="/images/discord-alt.svg" alt="" class="size-5" />
-			</a>
-			<a href="mailto:{CONTACT.email}" aria-label="Email" class="opacity-70 transition-opacity hover:opacity-100">
-				<Mail class="size-5 text-deep-teal-800" />
-			</a>
-		</div>
-		<p class="text-xs text-deep-teal-600">© {new Date().getFullYear()} BUAI Society. All rights reserved.</p>
-	</footer>
+	<SiteFooter />
 </div>
